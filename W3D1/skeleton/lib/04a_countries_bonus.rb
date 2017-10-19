@@ -63,13 +63,13 @@ def large_neighbors
     FROM
       countries AS c1
     WHERE
-      population = (
+      c1.population > 3 * (
         SELECT
-          MAX(c1.population * 3) AS triple_pop
+          MAX(c2.population) AS triple_pop
         FROM
           countries AS c2
         WHERE
-          c1.continent = c2.continent
+          c1.continent = c2.continent AND c1.name != c2.name
       );
   SQL
 end
