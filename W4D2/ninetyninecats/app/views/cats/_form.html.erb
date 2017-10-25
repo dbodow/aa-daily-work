@@ -1,0 +1,53 @@
+<!--
+  - patch for edit  - done
+  vs post for new
+  - change @cat to cat - done
+  - submit button name  - done
+  - cat_url(cat) for edit - done
+  vs cats_url for new
+
+  - radio and select defaults
+  - prefill edit
+-->
+
+
+
+
+<form action="<%= action == :edit ? cat_url(cat) : cats_url %>" method="post">
+  <% if action == :edit %>
+  <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+
+  <label for="name">Name</label>
+  <input id="name" type="text" name="cat[name]" value="<%= cat.name %>"><br>
+
+  <label for="sex">Sex</label>
+  <input type="radio" name="cat[sex]" value="M" <%= cat.sex == "M" ? 'checked="checked"' : "" %> > Male
+  <input type="radio" name="cat[sex]" value="F" <%= cat.sex == "F" ? 'checked="checked"' : "" %> > Female
+
+  <br>
+  <label for="color">Color</label>
+  <select id="color" name="cat[color]">
+    <option disabled <%= action == :edit ? "" : "selected"  %> >--Choose color--</option>
+
+    <option value="black" <%= cat.color == "black" ? "selected" : "" %> >black</option>
+    <option value="white" <%= cat.color == "white" ? "selected" : "" %> >white</option>
+    <option value="grey" <%= cat.color == "grey" ? "selected" : "" %> >grey</option>
+    <option value="tabby" <%= cat.color == "tabby" ? "selected" : "" %> >tabby</option>
+    <option value="savanna" <%= cat.color == "savanna" ? "selected" : "" %> >savanna</option>
+  </select>
+
+  <br>
+  <label for="birth_date">Birth Date</label>
+  <input id="birth_date" type="date" name="cat[birth_date]" value="<%= cat.birth_date %>">
+
+  <br>
+  <label for="description">Description</label>
+  <textarea id="description" name="cat[description]">
+    <%= cat.description %>
+  </textarea>
+
+  <br>
+  <input type="submit" value="<%= action == :edit ? "Edit cat" : "Add cat" %>">
+</form>

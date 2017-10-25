@@ -1,0 +1,7 @@
+<h1>Cat Request Status</h1>
+
+<a href="<%= new_cat_rental_request_url(@cat) %>">Make a request!</a>
+
+<p>
+<%= @cat_rental_request.cat.name %> was requested from <%= @cat_rental_request.start_date %> until <%= @cat_rental_request.end_date %>. status: <%= @cat_rental_request.status %>
+</p>

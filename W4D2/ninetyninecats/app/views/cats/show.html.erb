@@ -1,0 +1,38 @@
+<h1>Cat info</h1>
+
+
+<a href="<%= edit_cat_url(@cat) %>">Edit cat</a>
+
+<table>
+  <tr><td>Name:</td><td><%= @cat.name %></td></tr>
+  <tr><td>Birth date:</td><td><%= @cat.birth_date %></td></tr>
+  <tr><td>Color:</td><td><%= @cat.color %></td></tr>
+  <tr><td>Sex:</td><td><%= @cat.sex %></td></tr>
+  <tr><td>Description:</td><td><%= @cat.description %></td></tr>
+</table>
+
+<h2>Rental Requests</h2>
+
+<a href="<%= cat_cat_rental_requests_url(@cat) %>" >See All Rental Request Details</a>
+
+<ul>
+  <% @cat.cat_rental_requests.each do |request| %>
+    <li>Request <%=request.status%> for rental beginning <%=request.start_date%> through <%=request.end_date%>
+
+    <% if request.status == 'PENDING' %>
+      <form action="<%= cat_rental_requests_approve_url(request) %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <input type="submit" value="Approve rental!">
+      </form>
+
+      <form action="<%= cat_rental_requests_deny_url(request) %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <input type="submit" value="Deny rental!">
+      </form>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
+
+
+<a href="<%= cats_url %>">All cats</a>

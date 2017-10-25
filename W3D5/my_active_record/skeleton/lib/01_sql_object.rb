@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative 'db_connection'
 require 'active_support/inflector'
 # NB: the attr_accessor we wrote in phase 0 is NOT used in the rest
@@ -98,17 +99,45 @@ class SQLObject
 
   def attribute_values
     # ...
+    self.class.columns.map { |col_name| send(col_name) }
   end
 
   def insert
     # ...
+    col_names = self.class.columns.join(', ')
+    question_marks = (['?'] * self.class.columns.length).join(', ')
+    # debugger
+    DBConnection.execute(<<-SQL, attribute_values)
+    INSERT INTO
+      #{self.class.table_name} (#{col_names})
+    VALUES
+      (#{question_marks})
+    SQL
+    send(:id=, DBConnection.last_insert_row_id)
   end
 
   def update
     # ...
+    set_str = self.class.columns.map do |col_name|
+      col_name.to_s + ' = ?'
+    end.join(', ')
+    # debugger
+    DBConnection.execute(<<-SQL, attribute_values, id)
+    UPDATE
+      #{self.class.table_name}
+    SET
+      #{set_str}
+    WHERE
+      id = ?
+    SQL
   end
 
   def save
     # ...
+    if id
+      update
+    else
+      insert
+    end
   end
 end
