@@ -1,0 +1,43 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.left-nav > ul,
+.right-nav > ul {
+  display: flex;
+  align-items: center;
+}
+
+.left-nav > ul > li {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.right-nav > ul > li {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.right-nav > ul > li:last-of-type,
+.left-nav > ul > li:last-of-type {
+  margin-right: 0;
+  position: relative;
+}
+
+.left-nav > ul > li:hover,
+.right-nav > ul > li:last-of-type:hover {
+
+}
+
+.left-nav span {
+  margin-left: 5px;
+}
+
+
+.right-nav i {
+  padding: 0px 5px 0px 5px;
+}

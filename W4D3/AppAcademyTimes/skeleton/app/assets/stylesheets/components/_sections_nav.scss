@@ -1,0 +1,23 @@
+.sections-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid $light-gray;
+}
+
+.sections-nav ul li {
+  margin: 10px;
+}
+
+.sections-nav ul li a {
+  text-decoration: underline;
+}
+
+.sections-nav ul li button {
+	background: none;
+	padding: 0px;
+	color: #000;
+	font-weight: normal;
+  text-transform: none;
+	border: none;
+}

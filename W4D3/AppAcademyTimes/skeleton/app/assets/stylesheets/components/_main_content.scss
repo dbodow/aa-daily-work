@@ -1,0 +1,30 @@
+.col {
+  float: left;
+  box-sizing: border-box;
+}
+
+[class*='col='] {
+  padding-right: 20px;
+}
+
+[class*='col=']:last-of-type {
+  padding-right: 0;
+}
+
+.col-3-12 {
+  width: 25%;
+}
+
+.col-5-12 {
+  width: 41.6667%;
+}
+
+.col-2-12 {
+  width: 16.6667%;
+}
+
+@media all and (max-width: 900px) {
+  [class*='col-'] {
+    width: 100%;
+  }
+}
