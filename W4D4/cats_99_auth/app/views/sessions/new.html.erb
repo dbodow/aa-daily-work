@@ -1,0 +1,18 @@
+<!-- new login page  -->
+<h1>Log In</h1>
+
+<% if flash[:error] %>
+  <p> <%=flash[:error]%> </p>
+<% end %>
+
+<form action="<%=session_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+
+  <label for="user[username]">Username</label>
+  <input type="text" name="user[username]">
+
+  <label for="user[password]">Password</label>
+  <input type="password" name="user[password]">
+
+  <input type="submit" value="Log in!">
+</form>

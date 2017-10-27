@@ -1,0 +1,19 @@
+<!-- new users page  -->
+
+<h1>Sign Up</h1>
+
+<% if flash[:error] %>
+  <p> <%=flash[:error]%> </p>
+<% end %>
+
+<form action="<%=users_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+
+  <label for="user[username]">Username</label>
+  <input type="text" name="user[username]">
+
+  <label for="user[password]">Password</label>
+  <input type="password" name="user[password]">
+
+  <input type="submit" value="Make an account!">
+</form>
