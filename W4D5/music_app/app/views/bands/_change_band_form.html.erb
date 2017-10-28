@@ -1,0 +1,15 @@
+<% if action == :update %>
+  <% action_url = band_url(params[:id]) %>
+<% elsif action == :create %>
+  <% action_url = bands_url %>
+<% end %>
+
+<form action="<%=action_url%>" method="post">
+  <% if action == :update %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <%=auth_token%>
+  <label for="band[name]">Band Name</label>
+  <input type="text" name="band[name]" value="<%=flash.now[:band_name]%>">
+  <input type="submit" value="Submit Band!">
+</form>

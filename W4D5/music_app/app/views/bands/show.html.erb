@@ -1,0 +1,25 @@
+<h2>Band details</h2>
+
+<% if flash.now[:errors] %>
+  <% flash.now[:errors].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+<% end %>
+
+<form action="<%=band_url(params[:id])%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <%= auth_token %>
+  <input type="submit" value="Delete Band">
+</form>
+
+<form action="<%=edit_band_url(params[:id])%>" method="get">
+  <%= auth_token %>
+  <input type="submit" value="Edit Band">
+</form>
+
+<ul>
+  <% highlighted_band = Band.find_by(id: params[:id]) %>
+  <li><%= highlighted_band.name %></li>
+</ul>
+
+<a href="<%=bands_url%>">Back to all bands</a>

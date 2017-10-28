@@ -1,0 +1,4 @@
+<h5>Edit <%= Band.find_by(id: params[:id]).name %>:</h5>
+
+<%= render 'errors' %>
+<%= render 'change_band_form', action: :update %>
