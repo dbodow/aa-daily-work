@@ -1,0 +1,26 @@
+<% case action %>
+<% when :make_sub %>
+  <% submit_value = 'Create New Sub' %>
+  <% route = subs_url %>
+<% when :edit_sub %>
+  <% submit_value = 'Edit Sub' %>
+  <% route = sub_url(sub) %>
+<% end %>
+
+<%= render 'errors_display' %>
+
+<form class="sub-form" action="<%=route%>" method="post">
+  <% if action == :edit_sub %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label>
+    Title
+    <input type="text" name="sub[title]" value="<%=sub.title%>">
+  </label>
+  <label>
+    Description
+    <textarea name="sub[description]" rows="8" cols="80"><%=sub.description%></textarea>
+  </label>
+  <input type="submit" value="<%=submit_value%>">
+</form>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditClone</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>Reddit On Rails</h1>
+      <%= render 'current_user_nav' %>
+      <%= render 'new_user_nav' %>
+    </header>
+    <%= yield %>
+  </body>
+</html>

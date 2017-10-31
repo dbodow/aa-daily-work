@@ -1,0 +1,23 @@
+<% case action %>
+<% when :sign_up %>
+  <% route = users_url %>
+  <% submit_value = 'Sign Up' %>
+<% when :sign_in %>
+  <% route = session_url %>
+  <% submit_value = 'Sign In' %>
+<% end %>
+
+<%= render 'errors_display' %>
+
+<form class="user-form" action="<%=route%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label>
+    Username
+    <input type="text" name="user[username]" value="<%=user.username%>">
+  </label>
+  <label>
+    Password
+    <input type="password" name="user[password]" value="">
+  </label>
+  <input type="submit" value="<%=submit_value%>">
+</form>

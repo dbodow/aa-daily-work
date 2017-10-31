@@ -1,0 +1,11 @@
+<section class="subs-container">
+
+  <%= link_to "Add a sub", new_sub_url %>
+
+  <h2>Visit a Sub:</h2>
+  <ul class="subs-list">
+    <% @subs.each do |sub| %>
+      <li><%= link_to sub.title, sub_url(sub) %></li>
+    <% end %>
+  </ul>
+</section>

@@ -1,0 +1,7 @@
+<%= link_to "Back to #{@post.sub.title}", sub_url(@post.sub) %>
+<h2><%=@post.title%></h2>
+<%= link_to @post.url, @post.url if @post.url %>
+<p><%= @post.content if @post.content %></p>
+
+<%= link_to "Edit Post", edit_sub_post_url(sub_id: @post.sub.id, id: @post.id) if can_make_changes? %>
+<%= button_to "Delete Post", post_url(@post), method: :delete if can_make_changes? %>
