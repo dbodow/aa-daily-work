@@ -4,15 +4,14 @@ class PostsController < ApplicationController
   helper_method :can_make_changes?
 
   def new
-    @post = Post.new(sub_id: params[:sub_id])
+    @post = Post.new
   end
 
   def create
     @post = Post.new(post_params)
-    @post.sub_id = params[:sub_id]
     @post.author_id = current_user.id
     if @post.save
-      redirect_to sub_post_url(id: @post.id, sub_id: params[:sub_id])
+      redirect_to post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages
       render :new
@@ -23,13 +22,6 @@ class PostsController < ApplicationController
     lookup_post
   end
 
-  def destroy
-    lookup_post
-    parent_sub_id = @post.sub_id
-    @post.destroy
-    redirect_to sub_url(parent_sub_id)
-  end
-
   def edit
     lookup_post
   end
@@ -37,7 +29,7 @@ class PostsController < ApplicationController
   def update
     lookup_post
     if @post.update(post_params)
-      redirect_to sub_post_url(@post)
+      redirect_to post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages
       render :edit
@@ -51,7 +43,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :url, :content, cross_post_sub: [] )
+    params.require(:post).permit(:title, :url, :content, sub_ids: [] )
   end
 
   def is_moderator?

@@ -1,10 +1,10 @@
 <% case action %>
 <% when :make_post %>
   <% submit_value = 'Create New Post' %>
-  <% route = sub_posts_url %>
+  <% route = posts_url %>
 <% when :edit_post %>
   <% submit_value = 'Edit Post' %>
-  <% route = sub_post_url(post.sub_id) %>
+  <% route = post_url(post) %>
 <% end %>
 
 <%= render 'errors_display' %>
@@ -29,12 +29,12 @@
   </label>
 
   <h3>Cross Post Subs</h3>
-  <input type="hidden" name="post[cross_post_sub][]" value="">
+  <input type="hidden" name="post[sub_ids][]" value="">
   <% Sub.all.each do |sub| %>
   <ul>
     <li><label>
-      <input type="checkbox" name="post[cross_post_sub][]" value="<%=sub.id%>"
-        <%="checked" if @post.sub.title == sub.title %>>
+      <input type="checkbox" name="post[sub_ids][]" value="<%=sub.id%>"
+        <%="checked" if post.subs.include?(sub) %>>
       <%=sub.title%>
     </label></li>
   </ul>
