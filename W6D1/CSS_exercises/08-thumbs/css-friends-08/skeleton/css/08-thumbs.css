@@ -1,0 +1,32 @@
+/* PHASE 8: Thumbs */
+.thumbnails {
+  height: 210px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items:
+}
+
+.single-thumbnail {
+
+  height: 58px;
+  width: 58px;
+  border-radius: 5px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.black-hover:hover:before, .black-hover:hover:after {
+  display: block;
+}
+
+.black-hover:hover {
+  display: block;
+  content: attr(title);
+  position: absolute;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  left: 50%;
+  bottom: 65px;
+}
