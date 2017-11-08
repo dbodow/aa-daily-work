@@ -1,0 +1,16 @@
+.hanoi {
+  display: flex;
+}
+
+.tower {
+  display: inline-block;
+}
+
+.disc {
+
+}
+
+.disc-space {
+  display: flex;
+  flex-direction: column-reverse;
+}

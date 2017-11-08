@@ -1,0 +1,26 @@
+.ttt ul li:hover {
+  background-color: yellow;
+}
+.ttt ul li {
+  background-color: blue;
+}
+
+.markedX:after {
+  color: green;
+  content: "X";
+  font-size: 180px;
+  margin-left: 30px;
+}
+
+.markedO:after {
+  color: red;
+  content: "O";
+  font-size: 180px;
+  margin-left: 30px;
+}
+
+.ttt:after {
+  content: "";
+  clear: both;
+  display: block;
+}
